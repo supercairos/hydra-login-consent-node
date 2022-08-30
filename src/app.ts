@@ -30,6 +30,7 @@ app.use("/", routes)
 app.use("/login", login)
 app.use("/logout", logout)
 app.use("/consent", consent)
+app.use('/device', device)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
