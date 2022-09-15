@@ -1,4 +1,4 @@
-import { AdminApi, Configuration } from '@oryd/hydra-client'
+import { AdminApi, Configuration } from '@ory/hydra-client'
 
 const baseOptions: any = {}
 
@@ -8,7 +8,7 @@ if (process.env.MOCK_TLS_TERMINATION) {
 
 const hydraAdmin = new AdminApi(
   new Configuration({
-    basePath: process.env.HYDRA_ADMIN_URL,
+    basePath: process.env.HYDRA_ADMIN_URL || 'http://localhost:4445',
     baseOptions
   })
 )
