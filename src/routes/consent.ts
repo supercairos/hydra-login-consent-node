@@ -4,7 +4,7 @@ import urljoin from 'url-join'
 import csrf from 'csurf'
 import { hydraAdmin } from '../config'
 import { oidcConformityMaybeFakeSession } from './stub/oidc-cert'
-import { AcceptOAuth2ConsentRequestSession } from '@ory/client'
+import { AcceptOAuth2ConsentRequestSession } from '@ory/hydra-client'
 
 // Sets up csrf protection
 const csrfProtection = csrf({ cookie: true })
@@ -119,10 +119,10 @@ router.post('/', csrfProtection, (req, res, next) => {
 
   // Here is also the place to add data to the ID or access token. For example,
   // if the scope 'profile' is added, add the family and given name to the ID Token claims:
-  // if (grantScope.indexOf('profile')) {
-  //   session.id_token.family_name = 'Doe'
-  //   session.id_token.given_name = 'John'
-  // }
+  if (grantScope.indexOf('profile')) {
+    session.id_token.family_name = 'Doe'
+    session.id_token.given_name = 'John'
+  }
 
   // Let's fetch the consent request again to be able to set `grantAccessTokenAudience` properly.
   hydraAdmin

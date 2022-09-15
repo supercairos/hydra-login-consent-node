@@ -1,4 +1,4 @@
-import { Configuration, V0alpha2Api } from '@ory/client'
+import { Configuration, V0alpha2Api } from '@ory/hydra-client'
 
 const baseOptions: any = {}
 
@@ -7,8 +7,7 @@ if (process.env.MOCK_TLS_TERMINATION) {
 }
 
 const configuration = new Configuration({
-  basePath: process.env.HYDRA_ADMIN_URL,
-  accessToken: process.env.ORY_PAT,
+  basePath: process.env.HYDRA_ADMIN_URL || 'http://localhost:4445',
   baseOptions
 })
 

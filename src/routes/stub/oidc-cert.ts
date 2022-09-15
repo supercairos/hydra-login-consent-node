@@ -6,7 +6,7 @@ import {
   OAuth2ConsentRequest,
   AcceptOAuth2ConsentRequestSession,
   OAuth2LoginRequest
-} from '@ory/client'
+} from '@ory/hydra-client'
 
 export const oidcConformityMaybeFakeAcr = (
   request: OAuth2LoginRequest,
