@@ -11,6 +11,8 @@ import routes from "./routes"
 import login from "./routes/login"
 import logout from "./routes/logout"
 import consent from "./routes/consent"
+import device from "./routes/device"
+import device_success from "./routes/device_success"
 
 const app = express()
 
@@ -20,6 +22,9 @@ app.set("view engine", "pug")
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.get('/favico.ico', (_, res) => {
+  res.sendStatus(404);
+});
 app.use(logger("dev"))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -31,6 +36,7 @@ app.use("/login", login)
 app.use("/logout", logout)
 app.use("/consent", consent)
 app.use('/device', device)
+app.use('/device/success', device_success)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
